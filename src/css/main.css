@@ -2,9 +2,6 @@
 
 
 
-/*//////////////////////////////////////////////////////////////////
-[ FONT ]*/
-
 @font-face {
   font-family: Ubuntu-Regular;
   src: url('../fonts/ubuntu/Ubuntu-Regular.ttf'); 
@@ -15,11 +12,6 @@
   src: url('../fonts/ubuntu/Ubuntu-Bold.ttf'); 
 }
 
-
-
-
-/*//////////////////////////////////////////////////////////////////
-[ RESTYLE TAG ]*/
 
 * {
 	margin: 0px; 

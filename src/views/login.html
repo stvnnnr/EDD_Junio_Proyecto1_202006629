@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Login</title>
+</head>
+
+<body>
+	<div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+		<div class="max-w-md w-full space-y-8">
+			<div>
+				<img src="../assets/img/libros.png" width="300" height="80">
+				<h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Login</h2>
+			</div>
+			<div class="mt-8 space-y-6">
+				<div class="rounded-md shadow-sm -space-y-px">
+					<div>
+						<label for="email-address" class="sr-only">Usuario</label>
+						<input id="user" name="email" type="email" autocomplete="email" required
+							class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+							placeholder="Usuario">
+					</div>
+					<div>
+						<label for="password" class="sr-only">Contraseña</label>
+						<input id="pass" name="password" type="password" autocomplete="current-password" required
+							class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+							placeholder="Contraseña">
+					</div>
+				</div>
+
+				<div>
+					<button onclick="login()"
+						class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+						Inicia Sesión
+					</button>
+				</div>
+				<div id="alert-incorrect-credentials" class="hidden p-3 rounded-md text-red-400 bg-red-200">
+					Credenciales incorrectas
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="../js/login.js"></script>
+</body>
+
+</html>
