@@ -33,9 +33,13 @@
 				</div>
 
 				<div>
-					<button onclick="login()"
+					<button id="log"
 						class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
 						Inicia Sesión
+					</button>
+					<button id="volver"
+						class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+						Volver
 					</button>
 				</div>
 				<div id="alert-incorrect-credentials" class="hidden p-3 rounded-md text-red-400 bg-red-200">
@@ -44,8 +48,13 @@
 			</div>
 		</div>
 	</div>
+	<script src="//d3js.org/d3.v5.min.js"></script>
+	<script src="https://unpkg.com/@hpcc-js/wasm@0.3.11/dist/index.min.js"></script>
+	<script src="https://unpkg.com/d3-graphviz@3.0.5/build/d3-graphviz.js"></script>
+	<script type="module" src="../js/main.js"></script>
+	<script type="module" src="../js/login.js"></script>
 	<script src="https://cdn.tailwindcss.com"></script>
-	<script src="../js/login.js"></script>
+
 </body>
 
 </html>

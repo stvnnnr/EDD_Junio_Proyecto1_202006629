@@ -73,10 +73,12 @@ export class listaCircular{
         codigodot += nodos+"\n"
         codigodot += "{rank=same;\n"+conexiones+"\n}\n}"
         console.log(codigodot)
-        d3.select('#lectors').graphviz()
+        if (document.getElementById("lectors")){
+            d3.select('#lectors').graphviz()
             .width(300)
             .height(300)
             .renderDot(codigodot)
+        }
     }
 }
 // var lista = new listaCircular();

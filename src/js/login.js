@@ -1,20 +1,12 @@
-import { listaUsuarios } from "./main.js"
-document.getElementById('sesion').addEventListener("click", logearse, false);
+// import { listaUsuarios } from "./main.js"
+console.log("JAJAJAJAJ")
+import {listaUsuarios} from './main.js'
+
 document.getElementById('volver').addEventListener("click", volver, false);
-function logearse() {
-    var usuario = document.getElementById('user').value
-    var password = document.getElementById('pass').value
-    if (usuario == "" || password == "") {
-        alert("mete tus datos papito")
-    } else {
-        var Respuesta = listaUsuarios.logear(usuario, password)
-        if (Respuesta[0] != "Nulo") {
-            return
-        } else {
-            alert("Ese man ni existe")
-        }
-    }
+document.getElementById('log').addEventListener("click", logear, false);
+function logear(){
+    alert("Intenta logearte")
 }
 function volver(){
-    window.location.href = "index.html"
+    window.location.href = "../../index.html"
 }
