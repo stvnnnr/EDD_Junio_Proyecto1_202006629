@@ -18,12 +18,21 @@ export class listaCircular{
             this.contador = this.contador+1
         }else{
             var actual = this.cabeza
-            for (let index=0; index<(this.contador+1); index++) {
-                actual = actual.siguiente
+            if(this.contador==1){
+                var tempo = new nodo(usuario)
+                actual.siguiente = tempo
+                tempo.siguiente = this.cabeza
+                this.contador = this.contador+1
+            }else{
+                var actual = this.cabeza
+                for (let index = 0; index < this.contador-1; index++) {
+                    actual = actual.siguiente
+                }
+                var tempo = new nodo(usuario)
+                actual.siguiente = tempo
+                tempo.siguiente = this.cabeza
+                this.contador = this.contador+1
             }
-            actual.siguiente = new nodo(objetico)
-            actual.siguiente.siguiente = this.cabeza
-            this.contador = this.contador+1
         }
     }
 
@@ -75,6 +84,34 @@ export class listaCircular{
         console.log(codigodot)
         if (document.getElementById("lectors")){
             d3.select('#lectors').graphviz()
+            .width(300)
+            .height(300)
+            .renderDot(codigodot)
+        }
+    }
+    graficarAdmin(){
+        var codigodot = "digraph G{size=\"3\";\nlabel=\" Inicio a fin \";\nnode [shape=doublecircle];N0;\nnode [shape=circle];\n";
+        var temporal = this.cabeza
+        var conexiones ="";
+        var nodos ="";
+        var numnodo= 0;
+        for (let index=0; index<(this.contador); index++) {
+            nodos+=  "N" + numnodo + "[label=\"" + temporal.usuario.nombre + "\" ];\n"
+            if(temporal.siguiente != this.cabeza){
+                var auxnum = numnodo+1
+                conexiones += "N" + numnodo + " -> N" + auxnum + "[label=\"=>\" dir=both];\n"
+            }else{
+                var auxnum = numnodo+1
+                conexiones += "N" + (numnodo) + " -> N" + 0 + "[dir=both];\n"
+            }
+            temporal = temporal.siguiente
+            numnodo++;
+        }
+        codigodot += nodos+"\n"
+        codigodot += "{rank=same;\n"+conexiones+"\n}\n}"
+        console.log(codigodot)
+        if (document.getElementById("table-users")){
+            d3.select('#table-users').graphviz()
             .width(300)
             .height(300)
             .renderDot(codigodot)
