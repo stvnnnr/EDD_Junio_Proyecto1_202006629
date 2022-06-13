@@ -1,16 +1,13 @@
-import { listaUsuarios } from './main.js'
+import { listaAdmins } from './listaAdmins/listaAdmins.js';
+import { listaUsuarios } from './listasUsuarios/listaCUsuarios.js';
 import { usuario } from "./usuario.js";
-document.getElementById('logout').addEventListener("click", logout, false);
 document.getElementById('enviarUser').addEventListener("click", loadFile, false);
 document.getElementById('viewUser').addEventListener("click", viewUser, false);
+document.getElementById('logout').addEventListener("click", logout, false);
 
-function logout() {
-    window.location.href = "../views/login.html"
-}
 
 function loadFile() {
     var input, file, fr;
-
     input = document.getElementById('files');
     if (!input) {
         alert("No hay documento");
@@ -43,7 +40,10 @@ function crearUsuarios(archivo) {
     }
     listaUsuarios.recorrer()
 }
-
 function viewUser(){
     listaUsuarios.graficarAdmin()
+}
+function logout(){
+    document.getElementById("adminDiv").style.display = "None"
+    document.getElementById("loginDiv").style.display = "block"
 }
