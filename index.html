@@ -132,8 +132,8 @@
         height: 200px;
         /* centrar vertical y horizontalmente */
         position: absolute;
-        top: 250px;
-        left: 600px;">
+        top: 200px;
+        left: 500px;">
             <form>
                 <div class="form-outline mb-4">
                     <input type="email" id="user" class="form-control" id="user" />
@@ -145,7 +145,6 @@
                     <label class="form-label" for="form2Example2">Contraseña</label>
                 </div>
 
-                <!-- Submit button -->
                 <button type="button" id="log" class="btn btn-primary btn-block mb-4">Iniciar Sesión</button>
                 <button type="button" id="volver" class="btn btn-primary btn-block mb-4">Volver al home</button>
             </form>
@@ -211,36 +210,35 @@
             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                 <div class="p-4">
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                        data-bs-target="#carga-doctores">
+                        data-bs-target="#carga-libros">
                         Carga masiva
                     </button>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="carga-doctores" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    <div class="modal fade" id="carga-libros" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
                         <div class="modal-dialog">
-                            <div class="modal-content">
+                            <div class="modal-content" id="divCargaLibro">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Carga masiva Doctores</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Carga masiva Libros</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <label for="files">Upload a CSV formatted file:</label>
-                                    <input type="file" id="filesDoc" class="form-control" accept=".csv" required
-                                        onchange="displayCsvDoc()" />
+                                    <label for="files">Upload a Json formatted file:</label>
+                                    <input type="file" id="filesLib" class="form-control" accept=".Json"/>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
                                         data-bs-dismiss="modal">Cancelar</button>
-                                    <button type="button" class="btn btn-primary" onclick="sendMasiveCvsDoc()">Subir
-                                        file</button>
+                                    <button type="button" class="btn btn-primary" id="enviarLibro">Enviar archivo</button>
                                 </div>
                             </div>
                         </div>
-                    </div> <button type="button" class="btn btn-primary" onclick="getDoctores()">Ver Doctores</button>
+                    </div> <button type="button" class="btn btn-primary" id="viewLibros">Ver Libros</button>
                     <div class="p-4">
-                        <div id="table-doctores">
+                        <div id="table-libros">
+                            
                         </div>
                     </div>
                 </div>
@@ -250,37 +248,35 @@
             <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                 <div class="p-4">
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                        data-bs-target="#carga-enfermeras">
+                        data-bs-target="#carga-autores">
                         Carga masiva
                     </button>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="carga-enfermeras" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    <div class="modal fade" id="carga-autores" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
                         <div class="modal-dialog">
-                            <div class="modal-content">
+                            <div class="modal-content" id="divCargaAutor">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Carga masiva Enfermeras</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Carga masiva Autores</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <label for="files">Upload a CSV formatted file:</label>
-                                    <input type="file" id="filesEnfer" class="form-control" accept=".csv" required
-                                        onchange="displayCsvEnfer()" />
+                                    <label for="files">Upload a Json formatted file:</label>
+                                    <input type="file" id="fileAutor" class="form-control" accept=".Json" />
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
                                         data-bs-dismiss="modal">Cancelar</button>
-                                    <button type="button" class="btn btn-primary" onclick="sendMasiveCvsEnfer()">Subir
-                                        file</button>
+                                    <button type="button" class="btn btn-primary" id="enviarAutor">Enviar Archivo</button>
                                 </div>
                             </div>
                         </div>
-                    </div> <button type="button" class="btn btn-primary" onclick="getEnfermeras()">Ver
-                        Enfermeras</button>
+                    </div> <button type="button" class="btn btn-primary">Ver
+                        Autores</button>
                     <div class="p-4">
-                        <div id="table-enfermeras">
+                        <div id="table-Autor">
                         </div>
                     </div>
                 </div>
@@ -301,5 +297,7 @@
 <script type="module" src="src/js/admin.js"></script>
 <script type="module" src="src/js/listasUsuarios/listaCUsuarios.js"></script>
 <script type="module" src="src/js/listaAdmins/listaAdmins.js"></script>
+<script type="module" src="src/js/listaLibrosComprados/listaLibCom.js"></script>
+
 
 </html>

@@ -70,10 +70,10 @@ export class listaCircular {
             nodos += "N" + numnodo + "[label=\"" + temporal.usuario.nombre + "\" ];\n"
             if (temporal.siguiente != this.cabeza) {
                 var auxnum = numnodo + 1
-                conexiones += "N" + numnodo + " -> N" + auxnum + "[label=\"=>\" dir=both];\n"
+                conexiones += "N" + numnodo + " -> N" + auxnum + ";\n"
             } else {
                 var auxnum = numnodo + 1
-                conexiones += "N" + (numnodo) + " -> N" + 0 + "[dir=both];\n"
+                conexiones += "N" + (numnodo) + " -> N" + 0 + ";\n"
             }
             temporal = temporal.siguiente
             numnodo++;
@@ -83,8 +83,8 @@ export class listaCircular {
         console.log(codigodot)
         if (document.getElementById("table-users")) {
             d3.select('#table-users').graphviz()
-                .width(300)
-                .height(300)
+                .width(1000)
+                .height(800)
                 .renderDot(codigodot)
         }
     }
