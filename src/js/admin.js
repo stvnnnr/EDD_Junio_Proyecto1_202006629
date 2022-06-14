@@ -4,6 +4,10 @@ import { usuario } from "./usuario.js";
 import { listaCompras } from "./listaLibrosComprados/listaLibCom.js";
 import { abb } from "./arbolAutores/arbolAutores.js"
 import { autores } from "./autores.js"
+// var text = document.createTextNode("added text");
+// document.getElementById('nombreAutor').appendChild(text);
+
+document.getElementById('btnBuscar').addEventListener("click", buscarAutor, false);
 
 document.getElementById('enviarUser').addEventListener("click", loadFile, false);
 document.getElementById('enviarLibro').addEventListener("click", loadFileDos, false);
@@ -13,7 +17,7 @@ document.getElementById('viewAutors').addEventListener("click", viewAutors, fals
 document.getElementById('logout').addEventListener("click", logout, false);
 var arbolAutores = new abb()
 
-
+// ________________________________________________________________________________________________________________________________________________
 function loadFile() {
     var input, file, fr;
     input = document.getElementById('files');
@@ -125,6 +129,47 @@ function crearAutores(archivo) {
 }
 function viewAutors() {
     arbolAutores.generarDot()
+}
+function buscarAutor() {
+    var x = document.getElementById('autorBuscar').value;
+    var lola = arbolAutores.buscar(String(x))
+    if (lola != 0) {
+        removerHijos()
+        var nombreAutor = document.createTextNode(lola.nombre);
+        var correoAutor = document.createTextNode(lola.correo);
+        var telefonoAutor = document.createTextNode(lola.telefono);
+        var dpiAutor = document.createTextNode("DPI: " + lola.dpi);
+        var direcAutor = document.createTextNode("Dirección: " + lola.direccion);
+        var biografiaAutor = document.createTextNode(lola.biografia);
+        document.getElementById('nombreAutor').appendChild(nombreAutor);
+        document.getElementById('correoAutor').appendChild(correoAutor);
+        document.getElementById('telefonoAutor').appendChild(telefonoAutor);
+        document.getElementById('dpiAutor').appendChild(dpiAutor);
+        document.getElementById('direcAutor').appendChild(direcAutor);
+        document.getElementById('biografiaAutor').appendChild(biografiaAutor);
+    } else {
+        removerHijos()
+    }
+}
+function removerHijos() {
+    const aa = document.createTextNode(""); 
+    const Uno = document.getElementById('nombreAutor');
+    Uno.replaceChildren(aa)
+
+    const Dos = document.getElementById('correoAutor');
+    Dos.replaceChildren(aa);
+
+    const Tres = document.getElementById('telefonoAutor');
+    Tres.replaceChildren(aa);
+
+    const Cuatro = document.getElementById('dpiAutor');
+    Cuatro.replaceChildren(aa);
+
+    const Cinco = document.getElementById('direcAutor');
+    Cinco.replaceChildren(aa);
+
+    const Seis = document.getElementById('biografiaAutor');
+    Seis.replaceChildren(aa);
 }
 // --------------------------------------------------------------------------------
 function logout() {

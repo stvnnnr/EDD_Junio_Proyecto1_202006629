@@ -5,12 +5,11 @@ class nodo {
         this.der = null
     }
 }
-
+var autorEncontrado;
 export class abb {
     constructor() {
         this.raiz = null
     }
-
     insertar(autor) {
         let aux = new nodo(autor)
         if (this.raiz == null) {
@@ -52,9 +51,9 @@ export class abb {
         cadena += "\n}"
         console.log(cadena)
         d3.select('#table-autors').graphviz()
-                .width(1000)
-                .height(800)
-                .renderDot(cadena)
+            .width(1000)
+            .height(800)
+            .renderDot(cadena)
     }
 
     cadenNodos(raizActual) {
@@ -73,8 +72,8 @@ export class abb {
             cadena += this.enlazar(raizActual.izq)
             cadena += this.enlazar(raizActual.der)
             if (raizActual.izq != null) {
-                cadena += "n" + raizActual.izq.autor.dpi + "-> n" + raizActual.autor.dpi + "\n"
-                // cadena += "n" + raizActual.autor.dpi + "-> n" + raizActual.izq.autor.dpi + "\n"
+                // cadena += "n" + raizActual.izq.autor.dpi + "-> n" + raizActual.autor.dpi + "\n"
+                cadena += "n" + raizActual.autor.dpi + "-> n" + raizActual.izq.autor.dpi + "\n"
             }
             if (raizActual.der != null) {
                 // cadena += "n" + raizActual.der.autor.dpi + "-> n" +raizActual.autor.dpi + "\n"
@@ -83,4 +82,49 @@ export class abb {
         }
         return cadena
     }
+
+    buscar(x) {
+        var nombre = x.toLocaleLowerCase()
+        var namee = nombre.replace(/ /g, "")
+        var xcomp = this.buscador(this.raiz, namee)
+        if (xcomp == "Existe") {
+            var comp = this.buscarAutor(this.raiz, namee)
+            alert("Si existe")
+            return (comp)
+        } else {
+            alert("No existe")
+            return (0)
+        }
+    }
+    buscarAutor(raiz, b) {
+        var nombrex = raiz.autor.nombre
+        var nombres = nombrex.toLocaleLowerCase()
+        var namees = nombres.replace(/ /g, "")
+        if (raiz === null) {
+            return null;
+        } else if (b < namees) {
+            return this.buscarAutor(raiz.izq, b);
+        } else if (b > namees) {
+            return this.buscarAutor(raiz.der, b);
+        }
+        else {
+            return raiz.autor;
+        }
+    }
+
+    buscador(raiz, b) {
+        if (raiz != null) {
+            var nombrex = raiz.autor.nombre
+            var nombres = nombrex.toLocaleLowerCase()
+            var namees = nombres.replace(/ /g, "")
+            var x = this.buscador(raiz.izq, b)
+            var y = this.buscador(raiz.der, b)
+            if (namees == b || x == "Existe" || y == "Existe") {
+                return ("Existe")
+            }
+        }
+    }
 }
+
+
+
