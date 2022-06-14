@@ -273,10 +273,27 @@
                                 </div>
                             </div>
                         </div>
-                    </div> <button type="button" class="btn btn-primary">Ver
+                    </div> <button type="button" class="btn btn-primary" id='viewAutors'>Ver
                         Autores</button>
+                        <!-- contenido en autorsssssssssss -->
                     <div class="p-4">
-                        <div id="table-Autor">
+                        <nav>
+                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                <button class="nav-link active" id="nav-arbol-tab" data-bs-toggle="tab" data-bs-target="#nav-arbol"
+                                    type="button" role="tab" aria-controls="nav-arbol" aria-selected="true">Arbol binario de busqueda</button>
+                                <button class="nav-link" id="nav-buscar-tab" data-bs-toggle="tab" data-bs-target="#nav-buscar"
+                                    type="button" role="tab" aria-controls="nav-buscar" aria-selected="false">Buscar Autor</button>
+                            </div>
+                        </nav>
+                        <div class="tab-content" id="nav-tabContent">
+                            <!--Empieza seccion de usuarios-->
+                            <div class="tab-pane fade show active" id="nav-arbol" role="tabpanel" aria-labelledby="nav-arbol-tab">
+                                <div id="table-autors"></div>
+                            </div>
+                
+                            <!--Empieza seccion de autores-->
+                            <div class="tab-pane fade" id="nav-buscar" role="tabpanel" aria-labelledby="nav-buscar-tab">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -298,6 +315,5 @@
 <script type="module" src="src/js/listasUsuarios/listaCUsuarios.js"></script>
 <script type="module" src="src/js/listaAdmins/listaAdmins.js"></script>
 <script type="module" src="src/js/listaLibrosComprados/listaLibCom.js"></script>
-
-
+<script type="module" src="src/js/arbolAutores/arbolAutores.js"></script>
 </html>

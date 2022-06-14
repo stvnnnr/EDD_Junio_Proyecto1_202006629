@@ -25,6 +25,22 @@ export class listaCompras{
         }
     }
 
+    graficar(user) {
+        var codigodot = 'subgraph ' + user;
+        codigodot += "{\nnode [shape=plaintext]\n"
+        codigodot += "struct" + user + "[label=<\n<TABLE BORDER=\"0\" CELLBORDER=\"1\" CELLSPACING=\"0\">\n<TR>\n"
+        codigodot += "<TD COLSPAN=\"3\" PORT=\"" + user + "\">" + this.cabeza.valor + "</TD>\n</TR>"
+        var temporal = this.cabeza.siguiente
+        while (temporal != null) {
+            codigodot += "\n<TR>\n"
+            codigodot += "<TD COLSPAN=\"3\"" + ">" + temporal.valor + "</TD>\n</TR>\n"
+            temporal = temporal.siguiente;
+        }
+
+        codigodot += "</TABLE>>];\n}\n}" + "\n"
+        console.log(codigodot)
+    }
+
     // recorrer(){
     //     var actual = this.cabeza;
     //     while(actual!=null ){
