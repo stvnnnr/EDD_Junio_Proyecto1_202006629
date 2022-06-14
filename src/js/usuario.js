@@ -8,13 +8,13 @@ export class usuario{
         this.rol = rol
         this.contra=contra
         this.telefono=telefono
-        self.listaLibros = listaCompras
+        this.listaLibros = listaCompras
     }
 
     setLibros(listaLibros){
-        self.listaLibros=listaLibros
+        this.listaLibros=listaLibros
     }
     getLibros(){
-        return self.listaLibros
+        return this.listaLibros
     }
 }

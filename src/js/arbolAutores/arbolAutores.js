@@ -44,15 +44,15 @@ export class abb {
     }
 
     generarDot() {
-        let cadena = "digraph arbolAutores {\n"
+        let cadena = "digraph arbolAutores {size=\"12\";\n"
         cadena += this.cadenNodos(this.raiz)
         cadena += "\n"
         cadena += this.enlazar(this.raiz)
         cadena += "\n}"
         console.log(cadena)
         d3.select('#table-autors').graphviz()
-            .width(1000)
-            .height(800)
+            .width(1400)
+            .height(1000)
             .renderDot(cadena)
     }
 

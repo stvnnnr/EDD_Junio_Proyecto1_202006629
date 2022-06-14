@@ -61,13 +61,13 @@ export class listaCircular {
 
     }
     graficarAdmin() {
-        var codigodot = "digraph G{size=\"3\";\nlabel=\" Inicio a fin \";\nnode [shape=doublecircle];N0;\nnode [shape=circle];\n";
+        var codigodot = "digraph G{size=\"10\";\nlabel=\" Inicio a fin \";\n node [shape=cube];\n";
         var temporal = this.cabeza
         var conexiones = "";
         var nodos = "";
         var numnodo = 0;
         for (let index = 0; index < (this.contador); index++) {
-            nodos += "N" + numnodo + "[label=\"" + temporal.usuario.nombre + "\" ];\n"
+            nodos += "N" + numnodo + "[label=\"" + temporal.usuario.nombre + "\" PORT=\"" + temporal.usuario.usuario + "\" ];\n"
             if (temporal.siguiente != this.cabeza) {
                 var auxnum = numnodo + 1
                 conexiones += "N" + numnodo + " -> N" + auxnum + ";\n"
@@ -79,14 +79,43 @@ export class listaCircular {
             numnodo++;
         }
         codigodot += nodos + "\n"
-        codigodot += "{rank=same;\n" + conexiones + "\n}\n}"
+        // meto los libros de cada user
+        codigodot += this.obtenerGraficaLibros() + "\n"
+        // 
+        codigodot += "{rank=same;\n" + conexiones + "\n}"
+        // meto las conexiones de cada user
+        codigodot += this.obtenerConexionLibros() + "\n}"
+        // 
         console.log(codigodot)
         if (document.getElementById("table-users")) {
             d3.select('#table-users').graphviz()
-                .width(1000)
-                .height(800)
+                .width(1400)
+                .height(1000)
                 .renderDot(codigodot)
         }
+    }
+    obtenerGraficaLibros() {
+        var temporal = this.cabeza
+        var texto = ""
+        for (let index = 0; index < (this.contador); index++) {
+            var listaLibrosUser = temporal.usuario.getLibros()
+            var textoLista = listaLibrosUser.graficar(temporal.usuario.usuario)
+            texto += textoLista + "\n"
+            temporal = temporal.siguiente
+        }
+        return (texto)
+    }
+
+    obtenerConexionLibros() {
+        var temporal = this.cabeza
+        var conexiones = "";
+        var numnodo = 0;
+        for (let index = 0; index < (this.contador); index++) {
+            conexiones += "N" + numnodo + ":" + temporal.usuario.usuario + "-> struct" + temporal.usuario.usuario + ":" + temporal.usuario.usuario + ";\n"
+            temporal = temporal.siguiente
+            numnodo++;
+        }
+        return(conexiones)
     }
 }
 export var listaUsuarios = new listaCircular();

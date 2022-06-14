@@ -4,18 +4,18 @@ import { usuario } from "./usuario.js";
 import { listaCompras } from "./listaLibrosComprados/listaLibCom.js";
 import { abb } from "./arbolAutores/arbolAutores.js"
 import { autores } from "./autores.js"
+import{matrizOrtogonal,ortoLibros} from "./matrizOrtogonalLibros/matrizOrtogonal.js"
+import{libro} from "./libro.js"
 // var text = document.createTextNode("added text");
 // document.getElementById('nombreAutor').appendChild(text);
 
 document.getElementById('btnBuscar').addEventListener("click", buscarAutor, false);
-
 document.getElementById('enviarUser').addEventListener("click", loadFile, false);
 document.getElementById('enviarLibro').addEventListener("click", loadFileDos, false);
 document.getElementById('enviarAutor').addEventListener("click", loadFileTres, false);
 document.getElementById('viewUser').addEventListener("click", viewUser, false);
 document.getElementById('viewAutors').addEventListener("click", viewAutors, false);
 document.getElementById('logout').addEventListener("click", logout, false);
-var arbolAutores = new abb()
 
 // ________________________________________________________________________________________________________________________________________________
 function loadFile() {
@@ -64,6 +64,7 @@ function viewUser() {
     listaUsuarios.graficarAdmin()
 }
 // ----------------------------------------------------------------------------------------------------------------------------------
+
 function loadFileDos() {
     var input, file, fr;
     input = document.getElementById('filesLib');
@@ -90,10 +91,21 @@ function receivedTextDos(e) {
     $("#carga-libros").modal("hide");
     alert("Documento Subido")
 }
+// asdjjkasdkjadbkjabdjkawbdkja
 function crearLibros(archivo) {
-    console.log(archivo)
+    for (let x of archivo) {
+        // var libroNuevo = new libro(x.isbn, x.nombre_autor, x.nombre_libro, x.cantidad, x.fila, x.columna, x.paginas,x.categoria)
+        console.log(x.isbn, x.nombre_autor, x.nombre_libro, x.cantidad, x.fila, x.columna, x.paginas,x.categoria)
+        // userNew.setLibros(listComp)
+        // if (x.rol == "Administrador") {
+        //     listaAdmins.insertar(userNew)
+        // } else {
+        //     listaUsuarios.insertar(userNew)
+        // }
+    }
 }
 // -----------------------------------------------------------------------------------------------------------------------------
+var arbolAutores = new abb()
 function loadFileTres() {
     var input, file, fr;
     input = document.getElementById('fileAutor');
