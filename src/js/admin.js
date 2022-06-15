@@ -94,15 +94,12 @@ function receivedTextDos(e) {
 // asdjjkasdkjadbkjabdjkawbdkja
 function crearLibros(archivo) {
     for (let x of archivo) {
-        // var libroNuevo = new libro(x.isbn, x.nombre_autor, x.nombre_libro, x.cantidad, x.fila, x.columna, x.paginas,x.categoria)
-        console.log(x.isbn, x.nombre_autor, x.nombre_libro, x.cantidad, x.fila, x.columna, x.paginas,x.categoria)
-        // userNew.setLibros(listComp)
-        // if (x.rol == "Administrador") {
-        //     listaAdmins.insertar(userNew)
-        // } else {
-        //     listaUsuarios.insertar(userNew)
-        // }
+        var libroNuevo = new libro(x.isbn, x.nombre_autor, x.nombre_libro, x.cantidad, x.fila, x.columna, x.paginas,x.categoria)
+        ortoLibros.buscarRemplazar(x.fila,x.columna,libroNuevo)
     }
+    // ortoLibros.recorrer()
+    // ortoLibros.pintar()
+    ortoLibros.graff()
 }
 // -----------------------------------------------------------------------------------------------------------------------------
 var arbolAutores = new abb()

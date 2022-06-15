@@ -237,9 +237,106 @@
                         </div>
                     </div> <button type="button" class="btn btn-primary" id="viewLibros">Ver Libros</button>
                     <div class="p-4">
-                        <div id="table-libros">
+                        <!-- empieza -->
+                        <nav>
+                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                <button class="nav-link active" id="nav-fantasia-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-fantasia" type="button" role="tab" aria-controls="nav-fantasia"
+                                    aria-selected="true">Fantasia</button>
 
+                                <button class="nav-link" id="nav-thriller-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-thriller" type="button" role="tab" aria-controls="nav-thriller"
+                                    aria-selected="false">Thriller</button>
+
+                                <button class="nav-link" id="nav-ejemplares-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-ejemplares" type="button" role="tab"
+                                    aria-controls="nav-ejemplares" aria-selected="false">Ejemplares</button>
+
+                                <button class="nav-link" id="nav-libros-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-libros" type="button" role="tab" aria-controls="nav-libros"
+                                    aria-selected="false">Libros</button>
+
+                                <button class="nav-link" id="nav-pedidos-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-pedidos" type="button" role="tab" aria-controls="nav-pedidos"
+                                    aria-selected="false">Pedidos</button>
+                            </div>
+                        </nav>
+                        <div class="tab-content" id="nav-tabContent">
+                            <!--va uno-->
+                            <div class="tab-pane fade show active" id="nav-fantasia" role="tabpanel"
+                                aria-labelledby="nav-fantasia-tab">
+                                <nav>
+                                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                        <button class="nav-link active" id="nav-ortogonal-tab" data-bs-toggle="tab"
+                                            data-bs-target="#nav-ortogonal" type="button" role="tab"
+                                            aria-controls="nav-ortogonal" aria-selected="true">Matriz</button>
+
+                                        <button class="nav-link" id="nav-libreraOrto-tab" data-bs-toggle="tab"
+                                            data-bs-target="#nav-libreraOrto" type="button" role="tab"
+                                            aria-controls="nav-libreraOrto" aria-selected="false">Librera</button>
+                                    </div>
+                                </nav>
+                                <div class="tab-content" id="nav-tabContent">
+                                    <div class="tab-pane fade show active" id="nav-ortogonal" role="tabpanel"
+                                        aria-labelledby="nav-ortogonal-tab">
+                                        <div id="ortoFantasi" style="pointer-events: none;">
+
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="nav-libreraOrto" role="tabpanel"
+                                        aria-labelledby="nav-libreraOrto-tab">
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--va dos-->
+                            <div class="tab-pane fade" id="nav-thriller" role="tabpanel"
+                                aria-labelledby="nav-thriller-tab">
+                                <nav>
+                                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                        <button class="nav-link active" id="nav-dispersa-tab" data-bs-toggle="tab"
+                                            data-bs-target="#nav-dispersa" type="button" role="tab"
+                                            aria-controls="nav-dispersa" aria-selected="true">Matriz</button>
+
+                                        <button class="nav-link" id="nav-libreraDispe-tab" data-bs-toggle="tab"
+                                            data-bs-target="#nav-libreraDispe" type="button" role="tab"
+                                            aria-controls="nav-libreraDispe" aria-selected="false">Librera</button>
+                                    </div>
+                                </nav>
+                                <div class="tab-content" id="nav-tabContent">
+                                    <!--va uno-->
+                                    <div class="tab-pane fade show active" id="nav-dispersa" role="tabpanel"
+                                        aria-labelledby="nav-dispersa-tab">
+                                        <div id="dispeTri" style="pointer-events: none;">
+
+                                        </div>
+                                    </div>
+
+                                    <!--va dos-->
+                                    <div class="tab-pane fade" id="nav-libreraDispe" role="tabpanel"
+                                        aria-labelledby="nav-libreraDispe-tab">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- va tres -->
+                            <div class="tab-pane fade" id="nav-ejemplares" role="tabpanel"
+                                aria-labelledby="nav-ejemplares-tab">
+
+                            </div>
+                            <!-- va cuatro -->
+                            <div class="tab-pane fade" id="nav-libros" role="tabpanel" aria-labelledby="nav-libros-tab">
+
+                            </div>
+                            <!-- va cinco -->
+                            <div class="tab-pane fade" id="nav-pedidos" role="tabpanel"
+                                aria-labelledby="nav-pedidos-tab">
+
+                            </div>
                         </div>
+                        <!-- termina -->
                     </div>
                 </div>
             </div>
@@ -292,7 +389,7 @@
                             <!--Empieza seccion de arbol binario-->
                             <div class="tab-pane fade show active" id="nav-arbol" role="tabpanel"
                                 aria-labelledby="nav-arbol-tab">
-                                <div id="table-autors"></div>
+                                <div id="table-autors" style="pointer-events: none;"></div>
                             </div>
 
                             <!--Empieza seccion de buscar autores-->
@@ -309,14 +406,25 @@
                                         <div
                                             class=" image d-flex flex-column justify-content-center align-items-center">
                                             <button class="btn btn-secondary"> <img src="src/assets/img/profile.png"
-                                                    height="100" width="100" /></button> <span class="name mt-3"
-                                                ><p id="nombreAutor"></p></span>
-                                            <span class="idd" ><p id="correoAutor"></p></span>
-                                            <span class="idd" ><p id="telefonoAutor"></p></span>
-                                            <span class="idd" ><p id="dpiAutor"></p></span>
-                                            <span class="idd" ><p id="direcAutor"></p></span>
+                                                    height="100" width="100" /></button> <span class="name mt-3">
+                                                <p id="nombreAutor"></p>
+                                            </span>
+                                            <span class="idd">
+                                                <p id="correoAutor"></p>
+                                            </span>
+                                            <span class="idd">
+                                                <p id="telefonoAutor"></p>
+                                            </span>
+                                            <span class="idd">
+                                                <p id="dpiAutor"></p>
+                                            </span>
+                                            <span class="idd">
+                                                <p id="direcAutor"></p>
+                                            </span>
                                             <hr>
-                                            <span class="idd1" ><p id="biografiaAutor"></p></span>
+                                            <span class="idd1">
+                                                <p id="biografiaAutor"></p>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -344,4 +452,5 @@
 <script type="module" src="src/js/listaLibrosComprados/listaLibCom.js"></script>
 <script type="module" src="src/js/arbolAutores/arbolAutores.js"></script>
 <script type="module" src="src/js/matrizOrtogonalLibros/matrizOrtogonal.js"></script>
+
 </html>

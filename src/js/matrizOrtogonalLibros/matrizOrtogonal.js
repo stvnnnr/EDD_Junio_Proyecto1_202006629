@@ -81,11 +81,11 @@ export class matrizOrtogonal {
 
     recorrer() {
         var actual = this.cabeza;
-        for (let i = 1; i < (this.filas+1); i++) {
-            for (let j = 1; j < (this.columnas+1); j++) {
-                if (actual!=null){
+        for (let i = 1; i < (this.filas + 1); i++) {
+            for (let j = 1; j < (this.columnas + 1); j++) {
+                if (actual != null) {
                     console.log(actual.objeto)
-                    if (actual.siguiente!=null) {
+                    if (actual.siguiente != null) {
                         actual = actual.siguiente
                     }
                 }
@@ -94,6 +94,138 @@ export class matrizOrtogonal {
                 actual = actual.anterior
             }
             actual = actual.abajo
+        }
+    }
+    pintar() {
+        let lista = "."
+        var actual = this.cabeza
+        for (let i = 1; i < (this.filas + 1); i++) {
+            for (let j = 1; j < (this.columnas + 1); j++) {
+                if (actual != null) {
+                    if (actual.objeto.nombre) {
+                        var linea = "<TD>" + actual.objeto.nombre + "</TD>\n"
+                    } else {
+                        var linea = "<TD>" + "        " + "</TD>\n"
+                    }
+                    lista = lista + "," + linea
+                    if (actual.siguiente != null) {
+                        actual = actual.siguiente
+                    }
+                }
+            }
+            while (actual.anterior) {
+                actual = actual.anterior
+            }
+            actual = actual.abajo
+        }
+        lista = lista.split(".,")[1]
+        console.log(lista)
+        return (lista)
+
+    }
+    buscarRemplazar(fila, columna, libro) {
+        var actual = this.cabeza
+        for (let i = 0; i < columna; i++) {
+            actual = actual.siguiente
+        }
+        for (let j = 0; j < fila; j++) {
+            actual = actual.abajo
+        }
+        actual.objeto = libro
+    }
+
+    graficarLindo() {
+        var actual = this.cabeza
+        var textoComas = this.pintar()
+        var textoSComas = textoComas.split(",")
+        var z = 0
+        var texto = "digraph structs {node [shape=none]struct3 [label=<<TABLE BORDER=\"0\" fill=\"none\" CELLBORDER=\"1\" CELLSPACING=\"1\" CELLPADDING=\"20\">\n"
+        for (let i = 1; i < (this.filas + 1); i++) {
+            texto += "<TR>\n"
+            for (let j = 1; j < (this.columnas + 1); j++) {
+                if (actual != null) {
+                    texto += textoSComas[z]
+                    z = z + 1
+                    if (actual.siguiente != null) {
+                        actual = actual.siguiente
+                    }
+                }
+            }
+            texto += "</TR>\n"
+            while (actual.anterior) {
+                actual = actual.anterior
+            }
+            actual = actual.abajo
+        }
+        texto += "</TABLE>>];}"
+        console.log(texto)
+    }
+
+    graff() {
+        if (this.cabeza != null) {
+            // metemos la cabeza
+            var codigodot = "digraph G{size=\"13\"\n node [shape=box,width= 1.3,height=1]\n subgraph cluster_p{\nedge[dir=\"both\"]\n";
+            var actual = this.cabeza
+            var conexionesHorizontales = "";
+            var conexionesVerticales = "";
+            var nodos = "";
+            var numnodo = 0;
+            // dfghjklñfghjk
+            for (let i = 1; i < (this.filas + 1); i++) {
+                var otraExtra = "{rank=same;";
+                for (let j = 1; j < (this.columnas + 1); j++) {
+                    var varextra = "" ;
+                    if (actual.objeto.nombre) {
+                        nodos += "N" + numnodo + "[label=\"" + actual.objeto.nombre + "\",group=0]\n"
+                        otraExtra += "N" + numnodo + ","
+                        if(actual.abajo != null){
+                            var auxaux = numnodo + 25
+                            varextra = "N" + numnodo + " -> N" + auxaux + "\n"
+                        }
+                        if (actual.siguiente != null) {
+                            var auxnum = numnodo + 1
+                            conexionesHorizontales += "N" + numnodo + " -> N" + auxnum + "\n"
+                            conexionesHorizontales += varextra
+                            actual = actual.siguiente
+                        }
+                    } else {
+                        nodos += "N" + numnodo + "[label=\"" + "    " + "\",group=0]\n"
+                        otraExtra += "N" + numnodo + ","
+                        if(actual.abajo != null){
+                            var auxaux = numnodo + 25
+                            conexionesHorizontales += "N" + numnodo + " -> N" + auxaux + "\n"
+                        }
+                        if (actual.siguiente != null) {
+                            actual = actual.siguiente
+                            var auxnum = numnodo + 1
+                            conexionesHorizontales += "N" + numnodo + " -> N" + auxnum + "\n"
+                        }
+                    }
+
+                    numnodo++;
+                }
+                var str2 = otraExtra.substring(0, otraExtra.length - 1);
+                str2+="}\n"
+                nodos+=str2
+                while (actual.anterior) {
+                    actual = actual.anterior
+                }
+                if (actual.abajo != null) {
+                    actual = actual.abajo
+                }
+            }
+            codigodot += nodos + "\n"
+            codigodot += "\n" + conexionesHorizontales + "\n}}"
+            console.log(codigodot)
+            if (document.getElementById("ortoFantasi")) {
+                d3.select('#ortoFantasi').graphviz()
+                    .width(1400)
+                    .height(1400)
+                    .renderDot(codigodot)
+            }
+            
+        } else {
+            console.log("JAJSALSJ")
         }
     }
 }
