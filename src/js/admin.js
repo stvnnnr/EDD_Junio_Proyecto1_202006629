@@ -104,6 +104,9 @@ function crearLibros(archivo) {
     }
     ortoLibros.graficarLindo()
     ortoLibros.graff()
+    listaLib.grafPilas()
+    // listaLib.ordenarAlfa()
+    // listaLib.ordenarInAlfa()
 }
 // -----------------------------------------------------------------------------------------------------------------------------
 var arbolAutores = new abb()
