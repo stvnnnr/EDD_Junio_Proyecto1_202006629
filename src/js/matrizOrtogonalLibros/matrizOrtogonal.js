@@ -96,6 +96,7 @@ export class matrizOrtogonal {
             actual = actual.abajo
         }
     }
+
     pintar() {
         let lista = "."
         var actual = this.cabeza
@@ -103,9 +104,9 @@ export class matrizOrtogonal {
             for (let j = 1; j < (this.columnas + 1); j++) {
                 if (actual != null) {
                     if (actual.objeto.nombre) {
-                        var linea = "<TD>" + actual.objeto.nombre + "</TD>\n"
+                        var linea = "<TD bgcolor=\"coral\">" + actual.objeto.nombre + "</TD>\n"
                     } else {
-                        var linea = "<TD>" + "        " + "</TD>\n"
+                        var linea = "<TD bgcolor=\"none\">" + "        " + "</TD>\n"
                     }
                     lista = lista + "," + linea
                     if (actual.siguiente != null) {
@@ -119,16 +120,18 @@ export class matrizOrtogonal {
             actual = actual.abajo
         }
         lista = lista.split(".,")[1]
-        console.log(lista)
+        // console.log(lista)
         return (lista)
 
+    
     }
+
     buscarRemplazar(fila, columna, libro) {
         var actual = this.cabeza
-        for (let i = 0; i < columna; i++) {
+        for (let i = 0; i < columna-1; i++) {
             actual = actual.siguiente
         }
-        for (let j = 0; j < fila; j++) {
+        for (let j = 0; j < fila-1; j++) {
             actual = actual.abajo
         }
         actual.objeto = libro
@@ -139,7 +142,7 @@ export class matrizOrtogonal {
         var textoComas = this.pintar()
         var textoSComas = textoComas.split(",")
         var z = 0
-        var texto = "digraph structs {node [shape=none]struct3 [label=<<TABLE BORDER=\"0\" fill=\"none\" CELLBORDER=\"1\" CELLSPACING=\"1\" CELLPADDING=\"20\">\n"
+        var texto = "digraph structs {size=\"13\" bgcolor = \"none\" node [shape=none]struct3 [label=<<TABLE BORDER=\"0\" BGCOLOR=\"none\" CELLBORDER=\"4\" CELLSPACING=\"4\" CELLPADDING=\"25\">\n"
         for (let i = 1; i < (this.filas + 1); i++) {
             texto += "<TR>\n"
             for (let j = 1; j < (this.columnas + 1); j++) {
@@ -159,6 +162,12 @@ export class matrizOrtogonal {
         }
         texto += "</TABLE>>];}"
         console.log(texto)
+        if (document.getElementById("libreraFantasia")) {
+            d3.select('#libreraFantasia').graphviz()
+                .width(1400)
+                .height(1400)
+                .renderDot(texto)
+        }
     }
 
     graff() {
@@ -216,7 +225,7 @@ export class matrizOrtogonal {
             }
             codigodot += nodos + "\n"
             codigodot += "\n" + conexionesHorizontales + "\n}}"
-            console.log(codigodot)
+            // console.log(codigodot)
             if (document.getElementById("ortoFantasi")) {
                 d3.select('#ortoFantasi').graphviz()
                     .width(1400)

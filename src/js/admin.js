@@ -4,8 +4,9 @@ import { usuario } from "./usuario.js";
 import { listaCompras } from "./listaLibrosComprados/listaLibCom.js";
 import { abb } from "./arbolAutores/arbolAutores.js"
 import { autores } from "./autores.js"
-import{matrizOrtogonal,ortoLibros} from "./matrizOrtogonalLibros/matrizOrtogonal.js"
-import{libro} from "./libro.js"
+import { matrizOrtogonal, ortoLibros } from "./matrizOrtogonalLibros/matrizOrtogonal.js"
+import { libro } from "./libro.js"
+import { listaSimLibros } from "./listaLibros/listaLibros.js"
 // var text = document.createTextNode("added text");
 // document.getElementById('nombreAutor').appendChild(text);
 
@@ -91,14 +92,17 @@ function receivedTextDos(e) {
     $("#carga-libros").modal("hide");
     alert("Documento Subido")
 }
+var listaLib = new listaSimLibros()
 // asdjjkasdkjadbkjabdjkawbdkja
 function crearLibros(archivo) {
     for (let x of archivo) {
-        var libroNuevo = new libro(x.isbn, x.nombre_autor, x.nombre_libro, x.cantidad, x.fila, x.columna, x.paginas,x.categoria)
-        ortoLibros.buscarRemplazar(x.fila,x.columna,libroNuevo)
+        var libroNuevo = new libro(x.isbn, x.nombre_autor, x.nombre_libro, x.cantidad, x.fila, x.columna, x.paginas, x.categoria)
+        listaLib.insertar(libroNuevo)
+        if (x.categoria == "Fantasia") {
+            ortoLibros.buscarRemplazar(x.fila, x.columna, libroNuevo)
+        }
     }
-    // ortoLibros.recorrer()
-    // ortoLibros.pintar()
+    ortoLibros.graficarLindo()
     ortoLibros.graff()
 }
 // -----------------------------------------------------------------------------------------------------------------------------
@@ -161,7 +165,7 @@ function buscarAutor() {
     }
 }
 function removerHijos() {
-    const aa = document.createTextNode(""); 
+    const aa = document.createTextNode("");
     const Uno = document.getElementById('nombreAutor');
     Uno.replaceChildren(aa)
 
