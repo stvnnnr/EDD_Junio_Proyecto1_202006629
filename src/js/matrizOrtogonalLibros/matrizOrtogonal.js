@@ -84,7 +84,7 @@ export class matrizOrtogonal {
         for (let i = 1; i < (this.filas + 1); i++) {
             for (let j = 1; j < (this.columnas + 1); j++) {
                 if (actual != null) {
-                    console.log(actual.objeto)
+                    // console.log(actual.objeto)
                     if (actual.siguiente != null) {
                         actual = actual.siguiente
                     }
@@ -161,7 +161,7 @@ export class matrizOrtogonal {
             actual = actual.abajo
         }
         texto += "</TABLE>>];}"
-        console.log(texto)
+        // console.log(texto)
         if (document.getElementById("libreraFantasia")) {
             d3.select('#libreraFantasia').graphviz()
                 .width(1400)
@@ -234,7 +234,7 @@ export class matrizOrtogonal {
             }
             
         } else {
-            console.log("JAJSALSJ")
+            // console.log("JAJSALSJ")
         }
     }
 }

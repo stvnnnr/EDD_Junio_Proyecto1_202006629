@@ -7,16 +7,21 @@ import { autores } from "./autores.js"
 import { matrizOrtogonal, ortoLibros } from "./matrizOrtogonalLibros/matrizOrtogonal.js"
 import { libro } from "./libro.js"
 import { listaSimLibros } from "./listaLibros/listaLibros.js"
-// var text = document.createTextNode("added text");
-// document.getElementById('nombreAutor').appendChild(text);
+import { listaPedidos } from './listaPedidos/listaPedidos.js';
+var pedidos = new listaPedidos()
 
 document.getElementById('btnBuscar').addEventListener("click", buscarAutor, false);
 document.getElementById('enviarUser').addEventListener("click", loadFile, false);
 document.getElementById('enviarLibro').addEventListener("click", loadFileDos, false);
 document.getElementById('enviarAutor').addEventListener("click", loadFileTres, false);
 document.getElementById('viewUser').addEventListener("click", viewUser, false);
+document.getElementById('viewLibros').addEventListener("click", viewLibros, false);
 document.getElementById('viewAutors').addEventListener("click", viewAutors, false);
 document.getElementById('logout').addEventListener("click", logout, false);
+document.getElementById('logoutUser').addEventListener("click", logoutDos, false);
+document.getElementById('alfa').addEventListener("click", ascendente, false);
+document.getElementById('Antialfa').addEventListener("click", descendente, false);
+document.getElementById('hacerPedido').addEventListener("click", librosPedidos, false);
 
 // ________________________________________________________________________________________________________________________________________________
 function loadFile() {
@@ -93,7 +98,6 @@ function receivedTextDos(e) {
     alert("Documento Subido")
 }
 var listaLib = new listaSimLibros()
-// asdjjkasdkjadbkjabdjkawbdkja
 function crearLibros(archivo) {
     for (let x of archivo) {
         var libroNuevo = new libro(x.isbn, x.nombre_autor, x.nombre_libro, x.cantidad, x.fila, x.columna, x.paginas, x.categoria)
@@ -105,8 +109,25 @@ function crearLibros(archivo) {
     ortoLibros.graficarLindo()
     ortoLibros.graff()
     listaLib.grafPilas()
+    listaLib.imprimirSelec()
+    // listaLib.grafAlfa()
+    // var Uno = listaLib.devolverCabeza()
+    // var Dos = listaLib.devolverCola()
+    // listaLib.recorrer()
     // listaLib.ordenarAlfa()
     // listaLib.ordenarInAlfa()
+}
+function ascendente(){
+    listaLib.grafAlfa()
+}
+function descendente(){
+    listaLib.grafDes()
+}
+function viewLibros() {
+    ortoLibros.graficarLindo()
+    ortoLibros.graff()
+    listaLib.grafPilas()
+    listaLib.imprimirSelec()
 }
 // -----------------------------------------------------------------------------------------------------------------------------
 var arbolAutores = new abb()
@@ -191,4 +212,31 @@ function removerHijos() {
 function logout() {
     document.getElementById("adminDiv").style.display = "None"
     document.getElementById("loginDiv").style.display = "block"
+}
+function logoutDos() {
+    document.getElementById("userDiv").style.display = "None"
+    document.getElementById("loginDiv").style.display = "block"
+}
+// dfghjklñdfghjklñ{fghjklñ
+function librosPedidos(){
+    var Uno = document.getElementById('selectUno').value;
+    var Dos = document.getElementById('cantidad').value;
+    var userEncontrado = localStorage.getItem('user');
+    const { cantidad, librito,cupieron } = listaLib.comprarLibros(Uno,Dos)
+    var libAux = new libro(librito.isbn,librito.autor,librito.nombre,cupieron,librito.fila, librito.columna,librito.paginas,librito.categoria)
+    var libAuxDos = new libro(librito.isbn,librito.autor,librito.nombre,cantidad,librito.fila, librito.columna,librito.paginas,librito.categoria)
+    if(cantidad == 0){
+        listaUsuarios.compraLibros(userEncontrado,libAux,cupieron)
+    }else{
+        listaUsuarios.compraLibros(userEncontrado,libAux,cupieron)
+        pedidos.insertar(libAuxDos)
+        pedidos.graficarUser()
+        // metemos los libros en el user y en la lista de pedidos
+    }
+    listaUsuarios.graficarAdmin()
+    ortoLibros.graficarLindo()
+    ortoLibros.graff()
+    listaLib.grafPilas()
+    listaLib.imprimirSelec()
+    alert("Libro comprado")
 }

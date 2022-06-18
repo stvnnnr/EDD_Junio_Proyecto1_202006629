@@ -201,7 +201,7 @@
                             </div>
                         </div>
                     </div> <button type="button" class="btn btn-primary" id="viewUser">Ver Usuarios</button>
-                    <div class="p-4" id="table-users">
+                    <div class="p-4" id="table-users" style="pointer-events: none;">
                     </div>
                 </div>
             </div>
@@ -325,17 +325,25 @@
                             <!-- va tres -->
                             <div class="tab-pane fade" id="nav-ejemplares" role="tabpanel"
                                 aria-labelledby="nav-ejemplares-tab">
-
+                                <button type="button" class="btn btn-primary btn-lg btn-block" id="alfa">Ordenar
+                                    Ascendente</button>
+                                <button type="button" class="btn btn-primary btn-lg btn-block" id="Antialfa">Ordenar
+                                    Descendente</button>
+                                <div id="ejemplaresDiv" style="display:inline;">
+                                </div>
                             </div>
                             <!-- va cuatro -->
                             <div class="tab-pane fade" id="nav-libros" role="tabpanel" aria-labelledby="nav-libros-tab">
-                                <div id="pilasLib" style="display: flex; flex-flow: row wrap; justify-content: space-around;position:relative;">
+                                <div id="pilasLib"
+                                    style="display: flex; flex-flow: row wrap; justify-content: space-around;position:relative;">
                                 </div>
                             </div>
                             <!-- va cinco -->
                             <div class="tab-pane fade" id="nav-pedidos" role="tabpanel"
                                 aria-labelledby="nav-pedidos-tab">
+                                <div id="divPedidos" style="pointer-events: none;">
 
+                                </div>
                             </div>
                         </div>
                         <!-- termina -->
@@ -433,6 +441,57 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- userrrrrrrrrrrrrrrrrrrrrrr -->
+    <div id="userDiv" style="display: none;">
+        <nav class="navbar navbar-light bg-light">
+            <div class="w-100 clearfix shadow-sm px-4">
+                <div class="p-2 float-end text-end right">
+                    <label id="name-user-login" class="text-muted"></label><br>
+                    <button class="btn btn-link p-0" id="logoutUser" class="small">Cerrar Sesión</button>
+                </div>
+            </div>
+        </nav>
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <button class="nav-link active" id="nav-compras-tab" data-bs-toggle="tab" data-bs-target="#nav-compras"
+                    type="button" role="tab" aria-controls="nav-compras" aria-selected="true">Compras</button>
+                <button class="nav-link" id="nav-comprados-tab" data-bs-toggle="tab" data-bs-target="#nav-comprados"
+                    type="button" role="tab" aria-controls="nav-comprados" aria-selected="false">Libros</button>
+            </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <!--Empieza seccion de compras-->
+            <div class="tab-pane fade show active" id="nav-compras" role="tabpanel" aria-labelledby="nav-compras-tab">
+                <div class="p-4">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="inputGroupSelect01">Libros disponibles</label>
+                        </div>
+                        <hr>
+                        <hr>
+                        <hr>
+                        <select class="custom-select" id="selectUno">
+                            <option selected>Elija...</option>
+                        </select>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Cantidad de libros"
+                                aria-label="Recipient's username" aria-describedby="basic-addon2" id="cantidad">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button" id="hacerPedido">Hacer Pedido</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Empieza seccion de comprados-->
+            <div class="tab-pane fade" id="nav-comprados" role="tabpanel" aria-labelledby="nav-comprados-tab">
+                <div class="p-4" id="libComprados">
+
                 </div>
             </div>
         </div>

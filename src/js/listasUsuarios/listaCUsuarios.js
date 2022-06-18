@@ -39,10 +39,10 @@ export class listaCircular {
     recorrer() {
         var actual = this.cabeza
         for (let index = 0; index < (this.contador); index++) {
-            console.log("user", actual.usuario.nombre)
+            // console.log("user", actual.usuario.nombre)
             actual = actual.siguiente
         }
-        console.log(this.contador)
+        // console.log(this.contador)
     }
 
     logear(user, pass) {
@@ -86,7 +86,7 @@ export class listaCircular {
         // meto las conexiones de cada user
         codigodot += this.obtenerConexionLibros() + "\n}"
         // 
-        console.log(codigodot)
+        // console.log(codigodot)
         if (document.getElementById("table-users")) {
             d3.select('#table-users').graphviz()
                 .width(1400)
@@ -116,6 +116,19 @@ export class listaCircular {
             numnodo++;
         }
         return(conexiones)
+    }
+
+    compraLibros(user,libro,cupieron){
+        var actual = this.cabeza
+        for (let index = 0; index < (this.contador); index++) {
+            if(actual.usuario.usuario==user){
+                var suLista = actual.usuario.getLibros()
+                libro.cantidad = cupieron
+                suLista.insertar(libro)
+                suLista.graficarUser()
+            }
+            actual = actual.siguiente
+        }
     }
 }
 export var listaUsuarios = new listaCircular();

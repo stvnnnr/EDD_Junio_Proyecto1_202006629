@@ -15,9 +15,13 @@ function logear() {
             document.getElementById("adminDiv").style.display = "block"
             document.getElementById("loginDiv").style.display = "none"
         } else if (resUser == "Usuario") {
-            alert("Ese chatio no existe o esta mal escrito")
+            document.getElementById("userDiv").style.display = "block"
+            document.getElementById("loginDiv").style.display = "none"
+            localStorage.setItem("user",user);
         } else if (resAdmins == "Administrador") {
             alert("Admin")
+        }else{
+            alert("Usuario no encontrado")
         }
     } else {
         alert("Llena los campos papito")

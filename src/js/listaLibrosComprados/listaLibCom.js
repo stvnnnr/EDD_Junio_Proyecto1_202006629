@@ -1,27 +1,27 @@
-class nodo{
-    constructor(objetoValor){
+class nodo {
+    constructor(objetoValor) {
         this.valor = objetoValor;
         this.siguiente = null;
     }
 }
 
-export class listaCompras{
-    constructor(){
+export class listaCompras {
+    constructor() {
         this.cabeza = null;
         this.contador = 0;
     }
-    
-    insertar(objetico){
-        if(this.cabeza == null){
+
+    insertar(objetico) {
+        if (this.cabeza == null) {
             this.cabeza = new nodo(objetico);
-            this.contador = this.contador+1;
-        }else{
+            this.contador = this.contador + 1;
+        } else {
             var actual = this.cabeza;
-            while(actual.siguiente){
+            while (actual.siguiente) {
                 actual = actual.siguiente;
             }
             actual.siguiente = new nodo(objetico);
-            this.contador = this.contador+1;
+            this.contador = this.contador + 1;
         }
     }
 
@@ -29,19 +29,45 @@ export class listaCompras{
         var codigodot = 'subgraph ' + user;
         codigodot += "{\nnode [shape=plaintext]\n"
         codigodot += "struct" + user + "[label=<\n<TABLE BORDER=\"0\" CELLBORDER=\"1\" CELLSPACING=\"0\">\n<TR>\n"
-        if(this.cabeza != null){
-            codigodot += "<TD COLSPAN=\"3\" PORT=\"" + user + "\">" + this.cabeza.valor + "</TD>\n</TR>"
+        if (this.cabeza != null) {
+            codigodot += "<TD COLSPAN=\"3\" PORT=\"" + user + "\">" + this.cabeza.valor.nombre + " cantidad:" + this.cabeza.valor.cantidad + "</TD>\n</TR>"
             var temporal = this.cabeza.siguiente
-            while (temporal != null) {
-                codigodot += "\n<TR>\n"
-                codigodot += "<TD COLSPAN=\"3\"" + ">" + temporal.valor + "</TD>\n</TR>\n"
-                temporal = temporal.siguiente;
+            if (temporal != null) {
+                while (temporal != null) {
+                    codigodot += "\n<TR>\n"
+                    codigodot += "<TD COLSPAN=\"3\"" + ">" + temporal.valor.nombre + " cantidad:" + temporal.valor.cantidad + "</TD>\n</TR>\n"
+                    temporal = temporal.siguiente;
+                }
             }
-        }else{
+        } else {
             codigodot += "<TD COLSPAN=\"3\" PORT=\"" + user + "\">" + "" + "</TD>\n</TR>"
         }
         codigodot += "</TABLE>>];\n}" + "\n"
-        return(codigodot)
+        return (codigodot)
+    }
+    graficarUser() {
+        var codigodot = "digraph G{\nlabel=\" Libros comprados \";\nnode [shape=box];\n";
+        var temporal = this.cabeza
+        var conexiones = "";
+        var nodos = "";
+        var numnodo = 0;
+        while (temporal != null) {
+            nodos += "N" + numnodo + "[label=\"" + temporal.valor.nombre  + " cantidad:" + temporal.valor.cantidad + "\" ];\n"
+            if (temporal.siguiente != null) {
+                var auxnum = numnodo + 1
+                conexiones += "N" + numnodo + " -> N" + auxnum + ";\n"
+            }
+            temporal = temporal.siguiente
+            numnodo++;
+        }
+        codigodot += "//agregando nodos\n"
+        codigodot += nodos + "\n"
+        codigodot += "//agregando conexiones o flechas\n"
+        codigodot += "{rank=same;\n" + conexiones + "\n}\n}"
+        d3.select("#libComprados").graphviz()
+            .width(1400)
+            .height(1400)
+            .renderDot(codigodot)
     }
 
     // recorrer(){
