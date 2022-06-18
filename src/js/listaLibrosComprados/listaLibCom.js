@@ -69,6 +69,15 @@ export class listaCompras {
             .height(1400)
             .renderDot(codigodot)
     }
+    cantLibros(){
+        var actual = this.cabeza;
+        var sumCant = 0
+        while(actual!=null ){
+            sumCant = sumCant + actual.valor.cantidad
+            actual = actual.siguiente;
+        }
+        return sumCant
+    }
 
     // recorrer(){
     //     var actual = this.cabeza;

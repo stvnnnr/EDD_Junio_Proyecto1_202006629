@@ -1,3 +1,4 @@
+import{listaTops} from "../listaTops/listaTops.js"
 class nodo {
     constructor(usuario) {
         this.usuario = usuario
@@ -39,10 +40,10 @@ export class listaCircular {
     recorrer() {
         var actual = this.cabeza
         for (let index = 0; index < (this.contador); index++) {
-            // console.log("user", actual.usuario.nombre)
+            console.log("user", actual.usuario.nombre)
             actual = actual.siguiente
         }
-        // console.log(this.contador)
+        console.log(this.contador)
     }
 
     logear(user, pass) {
@@ -115,13 +116,13 @@ export class listaCircular {
             temporal = temporal.siguiente
             numnodo++;
         }
-        return(conexiones)
+        return (conexiones)
     }
 
-    compraLibros(user,libro,cupieron){
+    compraLibros(user, libro, cupieron) {
         var actual = this.cabeza
         for (let index = 0; index < (this.contador); index++) {
-            if(actual.usuario.usuario==user){
+            if (actual.usuario.usuario == user) {
                 var suLista = actual.usuario.getLibros()
                 libro.cantidad = cupieron
                 suLista.insertar(libro)
@@ -130,5 +131,49 @@ export class listaCircular {
             actual = actual.siguiente
         }
     }
+    graficarLlegando(user) {
+        var actual = this.cabeza
+        for (let index = 0; index < (this.contador); index++) {
+            if (actual.usuario.usuario == user) {
+                var suLista = actual.usuario.getLibros()
+                suLista.graficarUser()
+            }
+            actual = actual.siguiente
+        }
+    }
+    grafTops(){
+        var newLista =  new listaTops()
+        var actual = this.cabeza
+        for (let index = 0; index < (this.contador); index++) {
+            newLista.insertar(actual.usuario)
+            actual = actual.siguiente
+        }
+        newLista.graficarTopos()
+        newLista.topsDivs()
+    }
+
+    // ordenrTops() {
+    //     for (let i = 1; i < this.contador ; i++) {
+    //         var actualNuevo = this.cabeza
+    //         for (let j = 0; j < (this.contador-1); j++) {
+    //             var listaUno = actualNuevo.usuario.getLibros()
+    //             var cantUno = listaUno.cantLibros()
+    //             // if(actualNuevo.siguiente != null){
+    //                 var listaDos = actualNuevo.siguiente.usuario.getLibros()
+    //                 var cantDos = listaDos.cantLibros()
+    //                 if (actualNuevo.siguiente != null && cantUno < cantDos) {
+    //                     var nodoJ = actualNuevo.usuario
+    //                     var nodoJ2 = actualNuevo.siguiente.usuario
+    //                     actualNuevo.usuario = nodoJ2
+    //                     actualNuevo.siguiente.usuario = nodoJ
+    //                 }
+    //                 actualNuevo = actualNuevo.siguiente
+    //             // }
+                
+    //         }
+    //         console.log("termino una iteracion")
+    //     }
+    //     this.recorrer()
+    // }
 }
 export var listaUsuarios = new listaCircular();

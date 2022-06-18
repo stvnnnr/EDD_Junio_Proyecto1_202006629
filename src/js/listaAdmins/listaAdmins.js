@@ -40,10 +40,10 @@ export class listaCircularAdmin {
     recorrer() {
         var actual = this.cabeza
         for (let index = 0; index < (this.contador); index++) {
-            console.log("admin", actual.admin.nombre)
+            // console.log("admin", actual.admin.nombre)
             actual = actual.siguiente
         }
-        console.log(this.contador)
+        // console.log(this.contador)
     }
 
     logear(user, pass) {

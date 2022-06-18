@@ -120,7 +120,11 @@
         <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
         <div class="w3-container w3-padding-32">
             <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Nuestros mejores lectores.</h3>
-            <div id="lectors">
+            <div id="divTops"
+                style="display:inline-block;">
+
+            </div>
+            <div id="lectors" style="pointer-events: none;">
 
             </div>
             <!-- acá irá la lista doble de personas -->
@@ -155,7 +159,7 @@
         <nav class="navbar navbar-light bg-light">
             <div class="w-100 clearfix shadow-sm px-4">
                 <div class="p-2 float-end text-end right">
-                    <label id="name-user-login" class="text-muted"></label><br>
+                    <label class="text-muted"></label><br>
                     <button class="btn btn-link p-0" id="logout" class="small">Cerrar Sesión</button>
                 </div>
             </div>
@@ -481,7 +485,8 @@
                             <input type="text" class="form-control" placeholder="Cantidad de libros"
                                 aria-label="Recipient's username" aria-describedby="basic-addon2" id="cantidad">
                             <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button" id="hacerPedido">Hacer Pedido</button>
+                                <button class="btn btn-outline-secondary" type="button" id="hacerPedido">Hacer
+                                    Pedido</button>
                             </div>
                         </div>
                     </div>

@@ -117,10 +117,10 @@ function crearLibros(archivo) {
     // listaLib.ordenarAlfa()
     // listaLib.ordenarInAlfa()
 }
-function ascendente(){
+function ascendente() {
     listaLib.grafAlfa()
 }
-function descendente(){
+function descendente() {
     listaLib.grafDes()
 }
 function viewLibros() {
@@ -216,27 +216,40 @@ function logout() {
 function logoutDos() {
     document.getElementById("userDiv").style.display = "None"
     document.getElementById("loginDiv").style.display = "block"
+    localStorage.removeItem('user');
 }
 // dfghjklñdfghjklñ{fghjklñ
-function librosPedidos(){
+function librosPedidos() {
     var Uno = document.getElementById('selectUno').value;
     var Dos = document.getElementById('cantidad').value;
+    var compro = isNaN(Dos)
     var userEncontrado = localStorage.getItem('user');
-    const { cantidad, librito,cupieron } = listaLib.comprarLibros(Uno,Dos)
-    var libAux = new libro(librito.isbn,librito.autor,librito.nombre,cupieron,librito.fila, librito.columna,librito.paginas,librito.categoria)
-    var libAuxDos = new libro(librito.isbn,librito.autor,librito.nombre,cantidad,librito.fila, librito.columna,librito.paginas,librito.categoria)
-    if(cantidad == 0){
-        listaUsuarios.compraLibros(userEncontrado,libAux,cupieron)
-    }else{
-        listaUsuarios.compraLibros(userEncontrado,libAux,cupieron)
-        pedidos.insertar(libAuxDos)
-        pedidos.graficarUser()
-        // metemos los libros en el user y en la lista de pedidos
+    if (Uno == "Elija..." || Dos == "" || compro == true) {
+        alert("Ingrese los valores correctos")
+    } else {
+        const { cantidad, librito, cupieron } = listaLib.comprarLibros(Uno, Dos)
+        var libAux = new libro(librito.isbn, librito.autor, librito.nombre, cupieron, librito.fila, librito.columna, librito.paginas, librito.categoria)
+        var libAuxDos = new libro(librito.isbn, librito.autor, librito.nombre, cantidad, librito.fila, librito.columna, librito.paginas, librito.categoria)
+        if (cantidad == 0) {
+            if(cupieron!= 0){
+                listaUsuarios.compraLibros(userEncontrado, libAux, cupieron)
+            }
+            
+        } else {
+            if(cupieron!= 0){
+                listaUsuarios.compraLibros(userEncontrado, libAux, cupieron)
+            }
+            pedidos.insertar(libAuxDos)
+            pedidos.graficarUser()
+            // metemos los libros en el user y en la lista de pedidos
+        }
+        listaUsuarios.graficarAdmin()
+        ortoLibros.graficarLindo()
+        ortoLibros.graff()
+        listaLib.grafPilas()
+        listaLib.imprimirSelec()
+        // listaUsuarios.ordenrTops()
+        alert("Libro comprado")
     }
-    listaUsuarios.graficarAdmin()
-    ortoLibros.graficarLindo()
-    ortoLibros.graff()
-    listaLib.grafPilas()
-    listaLib.imprimirSelec()
-    alert("Libro comprado")
+
 }

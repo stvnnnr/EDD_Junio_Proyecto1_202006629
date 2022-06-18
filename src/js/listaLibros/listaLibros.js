@@ -44,7 +44,7 @@ export class listaSimLibros {
                 texto += "\n<div>\n<table class=\"table table-sm\">"
                 texto += "\n<tr class=\"table-primary\">\n<th>\"" + actual.valor.nombre + "\" - cantidad:" + conta + "</th>\n</tr>\n"
                 for (let i = 0; i < conta; i++) {
-                    texto += "<tr>\n<td align=\"center\">" + "<img src=../src/assets/img/libro.jpg WIDTH=284 HEIGHT=40>" + "</td>\n</tr>\n"
+                    texto += "<tr>\n<td align=\"center\">" + "<img src=src/assets/img/libro.jpg WIDTH=284 HEIGHT=40>" + "</td>\n</tr>\n"
                     count = count - 1
                 }
                 texto += "</table>\n</div>\n<div style=\"width:15px;\">     </div>"
@@ -114,7 +114,7 @@ export class listaSimLibros {
                 &nbsp;&nbsp;}<br>\
         }</div>"
         while (actual != null) {
-            const nombres = ["../src/assets/img/libros/l3.jpg", "../src/assets/img/libros/l1.jpg", "../src/assets/img/libros/l2.jpg", "../src/assets/img/libros/l4.jpg"];
+            const nombres = ["src/assets/img/libros/l3.jpg", "src/assets/img/libros/l1.jpg", "src/assets/img/libros/l2.jpg", "src/assets/img/libros/l4.jpg"];
             const aleatorio = nombres[Math.floor(Math.random() * nombres.length)];
             texto += "<div class=\"card\" style=\"width: 18rem;\">\n<img class=\"card-img-top\" src=\""
             texto += aleatorio
@@ -147,7 +147,7 @@ export class listaSimLibros {
                 &nbsp;&nbsp;}<br>\
         }</div>"
         while (actual != null) {
-            const nombres = ["../src/assets/img/libros/l3.jpg", "../src/assets/img/libros/l1.jpg", "../src/assets/img/libros/l2.jpg", "../src/assets/img/libros/l4.jpg"];
+            const nombres = ["src/assets/img/libros/l3.jpg", "src/assets/img/libros/l1.jpg", "src/assets/img/libros/l2.jpg", "src/assets/img/libros/l4.jpg"];
             const aleatorio = nombres[Math.floor(Math.random() * nombres.length)];
             texto += "<div class=\"card\" style=\"width: 18rem;\">\n<img class=\"card-img-top\" src=\""
             texto += aleatorio
