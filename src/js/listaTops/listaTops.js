@@ -100,7 +100,7 @@ export class listaTops {
                     texto += aleatorio
                     texto += "\" WIDTH=50 HEIGHT=300 alt=\"Card image cap\">\n<div class=\"card-body\"\n>"
                     texto += "<h5 class=\"card-title\">" + actual.valor.nombre + "</h5>\n</div>\n<ul class=\"list-group list-group-flush\">\n"
-                    texto += "<li class=\"list-group-item\">Libros: " + Uno + "</li>\n</ul>\n</div>\n<div style=\"height:15px;\">     </div>\n"
+                    texto += "<li class=\"list-group-item\">Libros: " + Uno + "</li>\n</ul>\n</div>\n"
                     actual = actual.siguiente;
                 }
             }

@@ -73,7 +73,7 @@ export class listaCompras {
         var actual = this.cabeza;
         var sumCant = 0
         while(actual!=null ){
-            sumCant = sumCant + actual.valor.cantidad
+            sumCant = Number(sumCant) + Number(actual.valor.cantidad)
             actual = actual.siguiente;
         }
         return sumCant
