@@ -8,6 +8,7 @@ import { matrizOrtogonal, ortoLibros } from "./matrizOrtogonalLibros/matrizOrtog
 import { libro } from "./libro.js"
 import { listaSimLibros } from "./listaLibros/listaLibros.js"
 import { listaPedidos } from './listaPedidos/listaPedidos.js';
+import {matrizDisperza, matrix } from './matrizDisperza/matrizDisperza.js';
 var pedidos = new listaPedidos()
 
 document.getElementById('btnBuscar').addEventListener("click", buscarAutor, false);
@@ -104,18 +105,16 @@ function crearLibros(archivo) {
         listaLib.insertar(libroNuevo)
         if (x.categoria == "Fantasia") {
             ortoLibros.buscarRemplazar(x.fila, x.columna, libroNuevo)
+        }else{
+            matrix.insertar(x.fila, x.columna, libroNuevo)
         }
     }
     ortoLibros.graficarLindo()
     ortoLibros.graff()
+    matrix.graficar()
     listaLib.grafPilas()
     listaLib.imprimirSelec()
-    // listaLib.grafAlfa()
-    // var Uno = listaLib.devolverCabeza()
-    // var Dos = listaLib.devolverCola()
-    // listaLib.recorrer()
-    // listaLib.ordenarAlfa()
-    // listaLib.ordenarInAlfa()
+    matrix.grafLindo()
 }
 function ascendente() {
     listaLib.grafAlfa()
@@ -128,6 +127,7 @@ function viewLibros() {
     ortoLibros.graff()
     listaLib.grafPilas()
     listaLib.imprimirSelec()
+    matrix.graficar()
 }
 // -----------------------------------------------------------------------------------------------------------------------------
 var arbolAutores = new abb()
@@ -244,10 +244,7 @@ function librosPedidos() {
             // metemos los libros en el user y en la lista de pedidos
         }
         listaUsuarios.graficarAdmin()
-        ortoLibros.graficarLindo()
-        ortoLibros.graff()
         listaLib.grafPilas()
-        listaLib.imprimirSelec()
         // listaUsuarios.ordenrTops()
         alert("Libro comprado")
     }

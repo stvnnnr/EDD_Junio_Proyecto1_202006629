@@ -103,6 +103,14 @@ hr .new1 {
     color: #FFFFFF;
 }
 
+#lindaDisper {
+    width: 1300px;
+    height: 1100px;
+    background-image: url("../assets/img/madera.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #FFFFFF;
+}
 
 
 :root {
